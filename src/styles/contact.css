@@ -1,0 +1,258 @@
+.contact-section {
+	padding-block: var(--space-16);
+}
+
+.contact-section--surface {
+	background-color: var(--color-surface);
+}
+
+.contact-intro {
+	max-width: 48rem;
+	color: var(--color-muted);
+	line-height: var(--line-height-relaxed);
+	margin-bottom: var(--space-10);
+}
+
+.contact-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-10);
+	align-items: start;
+}
+
+.contact-info h3 {
+	font-size: var(--font-size-xl);
+	margin-bottom: var(--space-6);
+}
+
+.contact-details {
+	display: grid;
+	gap: var(--space-4);
+	margin-bottom: var(--space-8);
+}
+
+.contact-detail {
+	display: grid;
+	gap: var(--space-1);
+}
+
+.contact-detail dt {
+	font-family: var(--font-heading);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	text-transform: uppercase;
+	color: var(--color-theme);
+}
+
+.contact-detail dd {
+	margin: 0;
+	color: var(--color-black);
+}
+
+.contact-detail a {
+	color: var(--color-black);
+	text-decoration: none;
+}
+
+.contact-detail a:hover {
+	color: var(--color-theme);
+}
+
+.office-cards {
+	display: grid;
+	gap: var(--space-6);
+}
+
+.office-card {
+	background: var(--color-white);
+	border: 1px solid var(--color-surface);
+}
+
+.office-card img {
+	width: 100%;
+	aspect-ratio: 5 / 4;
+	object-fit: cover;
+}
+
+.office-card-body {
+	padding: var(--space-5);
+}
+
+.office-card h4 {
+	font-size: var(--font-size-md);
+	margin-bottom: var(--space-3);
+}
+
+.office-card p {
+	margin: 0 0 var(--space-2);
+	color: var(--color-muted);
+	font-size: var(--font-size-sm);
+	line-height: var(--line-height-relaxed);
+}
+
+.office-card a {
+	color: var(--color-theme);
+	text-decoration: none;
+	font-weight: var(--font-weight-semibold);
+}
+
+/* Form */
+.contact-form-panel {
+	background: var(--color-white);
+	padding: var(--space-8);
+	box-shadow: var(--shadow-md);
+}
+
+.contact-form-panel h3 {
+	font-size: var(--font-size-xl);
+	margin-bottom: var(--space-6);
+}
+
+.contact-form {
+	display: grid;
+	gap: var(--space-4);
+}
+
+.form-field {
+	display: grid;
+	gap: var(--space-2);
+}
+
+.form-field label {
+	font-family: var(--font-heading);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 1px solid var(--color-surface);
+	background: var(--color-white);
+	color: var(--color-black);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+	color: var(--color-input-placeholder);
+}
+
+.form-field textarea {
+	min-height: 140px;
+	resize: vertical;
+}
+
+.form-honeypot {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.form-success {
+	padding: var(--space-4);
+	background: color-mix(in srgb, var(--color-theme) 12%, white);
+	border-left: 4px solid var(--color-theme);
+	color: var(--color-black);
+}
+
+/* Cities */
+.cities-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--space-6);
+}
+
+.city-card {
+	background: var(--color-white);
+	border: 1px solid var(--color-surface);
+	scroll-margin-top: 6rem;
+}
+
+.city-card img {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+}
+
+.city-card-body {
+	padding: var(--space-5);
+}
+
+.city-card h3 {
+	font-size: var(--font-size-lg);
+	margin-bottom: var(--space-3);
+}
+
+.city-card p {
+	margin: 0;
+	color: var(--color-muted);
+	font-size: var(--font-size-sm);
+	line-height: var(--line-height-relaxed);
+}
+
+.services-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-3) var(--space-8);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.services-list a {
+	font-family: var(--font-heading);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	text-decoration: none;
+}
+
+.services-list a:hover {
+	text-decoration: underline;
+}
+
+.why-list {
+	display: grid;
+	gap: var(--space-3);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.why-list li {
+	position: relative;
+	padding-left: var(--space-6);
+	color: var(--color-muted);
+	line-height: var(--line-height-relaxed);
+}
+
+.why-list li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.55em;
+	width: 8px;
+	height: 8px;
+	background: var(--color-theme);
+	border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+	.contact-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.cities-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 640px) {
+	.cities-grid,
+	.services-list {
+		grid-template-columns: 1fr;
+	}
+}

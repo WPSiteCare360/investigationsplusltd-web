@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.data.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.seo.title} description={post.data.seo.description}>
+	<article class="container blog-post">
+		<p class="back-link"><a href="/blog">Back to blog</a></p>
+		<h1>{post.data.title}</h1>
+		<p class="meta">
+			<time datetime={post.data.pubDate.toISOString()}>
+				{post.data.pubDate.toLocaleDateString('en-CA')}
+			</time>
+			{' | '}
+			<span>By {post.data.author.name}</span>
+		</p>
+		{
+			post.data.image && (
+				<figure class="featured-image">
+					<img src={post.data.image.src} alt={post.data.image.alt ?? ''} />
+				</figure>
+			)
+		}
+		{
+			post.data.categories.length > 0 && (
+				<p class="taxonomies">Categories: {post.data.categories.join(', ')}</p>
+			)
+		}
+		<div class="prose">
+			<Content />
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.blog-post {
+		padding: var(--space-10) 0 var(--space-16);
+		max-width: 48rem;
+	}
+
+	.back-link {
+		font-size: var(--font-size-sm);
+	}
+
+	.meta,
+	.taxonomies {
+		color: var(--color-muted);
+		font-size: var(--font-size-sm);
+	}
+
+	.featured-image {
+		margin: var(--space-6) 0;
+	}
+
+	.prose :global(p) {
+		margin-bottom: var(--space-4);
+	}
+
+	.prose :global(ul) {
+		margin-bottom: var(--space-4);
+	}
+</style>

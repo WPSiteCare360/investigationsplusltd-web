@@ -1,0 +1,89 @@
+/**
+ * Investigations Plus design tokens.
+ * Source: hello-ataki theme + Elementor global colors.
+ */
+:root {
+	/* Colors */
+	--color-theme: #0da272;
+	--color-theme-hover: #0acd8e;
+	--color-overlay: #1c393d;
+	--color-surface: #efefee;
+	--color-white: #ffffff;
+	--color-black: #000000;
+	--color-muted: #747373;
+	--color-input-placeholder: #a3a2a2;
+	--color-link: var(--color-theme);
+	--color-footer-link: #000000;
+	--color-footer-link-hover: #00000091;
+	--color-dropdown-hover: #0acd8e73;
+
+	/* Typography */
+	--font-body: 'Lora', Georgia, serif;
+	--font-heading: 'Open Sans', system-ui, sans-serif;
+	--font-topbar: 'Barlow Semi Condensed', system-ui, sans-serif;
+
+	--font-size-xs: 0.8125rem;
+	--font-size-sm: 0.9375rem;
+	--font-size-base: 1rem;
+	--font-size-md: 1.125rem;
+	--font-size-lg: 1.25rem;
+	--font-size-xl: 1.5rem;
+	--font-size-2xl: 2rem;
+	--font-size-3xl: 3rem;
+	--font-size-hero-subtitle: 1.25rem;
+	--font-size-hero-title: 4.5rem;
+	--font-size-hero-title-md: 3.125rem;
+	--font-size-hero-title-sm: 1.875rem;
+	--font-size-hero: 3rem;
+
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	--line-height-tight: 1.2;
+	--line-height-snug: 1.35;
+	--line-height-normal: 1.6;
+	--line-height-relaxed: 1.75;
+
+	/* Spacing */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.25rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+	--space-10: 2.5rem;
+	--space-12: 3rem;
+	--space-15: 3.75rem;
+	--space-16: 4rem;
+	--space-20: 5rem;
+
+	/* Layout */
+	--layout-max-width: 1480px;
+	--layout-content-padding: 1.25rem;
+	--layout-hero-min-height: 980px;
+	--layout-hero-min-height-md: 600px;
+	--layout-hero-padding-inline: 5rem;
+	--layout-hero-padding-inline-md: 2rem;
+	--layout-hero-padding-inline-sm: 1rem;
+	--layout-hero-padding-block-md: 10rem;
+	--layout-hero-padding-block-sm: 8rem;
+	--layout-hero-title-max-width: 850px;
+	--layout-subtitle-line-width: 40px;
+	--layout-subtitle-line-offset: 65px;
+
+	/* Radii */
+	--radius-sm: 2px;
+	--radius-md: 4px;
+	--radius-lg: 8px;
+
+	/* Shadows */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+	--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+	/* Transitions */
+	--transition-fast: 150ms ease;
+	--transition-base: 300ms ease;
+}

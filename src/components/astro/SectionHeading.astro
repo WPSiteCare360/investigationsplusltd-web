@@ -1,0 +1,52 @@
+---
+interface Props {
+	subtitle: string;
+	title?: string;
+	titleHtml?: string;
+	variant?: 'green' | 'white';
+	align?: 'left' | 'center';
+	class?: string;
+}
+
+const {
+	subtitle,
+	title,
+	titleHtml,
+	variant = 'green',
+	align = 'left',
+	class: className = '',
+} = Astro.props;
+
+const subtitleClass = variant === 'white' ? 'subtitle-white' : 'subtitle-green';
+---
+
+<div class:list={['section-heading', `section-heading--${align}`, className]}>
+	<h6 class={subtitleClass}>{subtitle}</h6>
+	{
+		titleHtml ? (
+			<h2 class="heading-mixed" set:html={titleHtml} />
+		) : title ? (
+			<h2>{title}</h2>
+		) : null
+	}
+</div>
+
+<style>
+	.section-heading {
+		margin-bottom: var(--space-8);
+	}
+
+	.section-heading--left {
+		padding-left: var(--layout-subtitle-line-offset);
+	}
+
+	.section-heading--center {
+		text-align: center;
+		padding-left: 0;
+	}
+
+	.section-heading--center .subtitle-green,
+	.section-heading--center .subtitle-white {
+		display: inline-block;
+	}
+</style>

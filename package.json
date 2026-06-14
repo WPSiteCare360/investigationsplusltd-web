@@ -6,10 +6,12 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "node scripts/generate-redirects.mjs && astro dev",
+    "build": "node scripts/generate-redirects.mjs && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "migrate:blog": "python3 scripts/migrate-blog.py",
+    "export:site": "python3 scripts/export-site-content.py"
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.12",

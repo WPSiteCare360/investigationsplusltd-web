@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/astro/HeroSection.astro';
+import SectionHeading from '../components/astro/SectionHeading.astro';
+import {
+	contactSeo,
+	contactHero,
+	contactIntro,
+	contactDetails,
+	offices,
+	serviceAreas,
+	formLocations,
+	investigationServices,
+	whyChooseUs,
+} from '../data/contact';
+import '../styles/contact.css';
+
+const showSuccess = Astro.url.searchParams.get('success') === 'true';
+---
+
+<BaseLayout title={contactSeo.title} description={contactSeo.description}>
+	<HeroSection {...contactHero} />
+
+	<section class="contact-section" id="contact-form">
+		<div class="container">
+			<SectionHeading subtitle="Contact Us" title="Free Confidential Consultation" />
+
+			<p class="contact-intro">{contactIntro}</p>
+
+			<div class="contact-grid">
+				<div class="contact-info">
+					<h3>Contact Information</h3>
+
+					<dl class="contact-details">
+						<div class="contact-detail">
+							<dt>Hours</dt>
+							<dd>{contactDetails.hours}</dd>
+						</div>
+						<div class="contact-detail">
+							<dt>Phone</dt>
+							<dd>
+								<a href={contactDetails.tollFreeHref}>{contactDetails.tollFree}</a>
+								<br />
+								<a href={contactDetails.gtaPhoneHref}>{contactDetails.gtaPhone} (GTA)</a>
+							</dd>
+						</div>
+						<div class="contact-detail">
+							<dt>Email</dt>
+							<dd>
+								<a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
+							</dd>
+						</div>
+						<div class="contact-detail">
+							<dt>Coverage</dt>
+							<dd>{contactDetails.coverage}</dd>
+						</div>
+						<div class="contact-detail">
+							<dt>Google Business</dt>
+							<dd>
+								<a href={contactDetails.googleBusiness} target="_blank" rel="noopener noreferrer">
+									View on Google Maps
+								</a>
+							</dd>
+						</div>
+					</dl>
+
+					<div class="office-cards">
+						{
+							offices.map((office) => (
+								<article class="office-card" id={office.id}>
+									<img
+										src={office.image}
+										alt={office.imageAlt}
+										loading="lazy"
+										width="640"
+										height="512"
+									/>
+									<div class="office-card-body">
+										<h4>{office.name}</h4>
+										<p>{office.address}</p>
+										<p>
+											<a href={office.phoneHref}>{office.phone}</a>
+										</p>
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+
+				<div class="contact-form-panel">
+					<h3>Send a Message</h3>
+
+					{
+						showSuccess && (
+							<p class="form-success" role="status">
+								Thank you for contacting Investigations Plus. We will respond as soon as
+								possible.
+							</p>
+						)
+					}
+
+					<form
+						class="contact-form"
+						name="contact"
+						method="POST"
+						action="/contact?success=true"
+						data-netlify="true"
+						data-netlify-honeypot="bot-field"
+					>
+						<input type="hidden" name="form-name" value="contact" />
+
+						<p class="form-honeypot" aria-hidden="true">
+							<label>
+								Do not fill this out:
+								<input name="bot-field" tabindex="-1" autocomplete="off" />
+							</label>
+						</p>
+
+						<div class="form-field">
+							<label for="contact-name">Name</label>
+							<input
+								id="contact-name"
+								type="text"
+								name="name"
+								placeholder="Your name"
+								required
+								autocomplete="name"
+							/>
+						</div>
+
+						<div class="form-field">
+							<label for="contact-email">Email</label>
+							<input
+								id="contact-email"
+								type="email"
+								name="email"
+								placeholder="Your email"
+								required
+								autocomplete="email"
+							/>
+						</div>
+
+						<div class="form-field">
+							<label for="contact-location">Location</label>
+							<select id="contact-location" name="location" required>
+								<option value="" disabled selected>Select a location</option>
+								{
+									formLocations
+										.filter((option) => option.value !== '')
+										.map((option) => (
+											<option value={option.value}>{option.label}</option>
+										))
+								}
+							</select>
+						</div>
+
+						<div class="form-field">
+							<label for="contact-message">Message</label>
+							<textarea
+								id="contact-message"
+								name="message"
+								placeholder="How can we help?"
+								required
+							/>
+						</div>
+
+						<button class="btn btn-theme" type="submit">Send Message</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact-section contact-section--surface" id="cities-we-serve">
+		<div class="container">
+			<SectionHeading subtitle="Where We Work" title="Cities We Serve" align="center" />
+			<div class="cities-grid">
+				{
+					serviceAreas.map((area) => (
+						<article class="city-card" id={area.id}>
+							<img
+								src={area.image}
+								alt={area.imageAlt}
+								loading="lazy"
+								width="640"
+								height="400"
+							/>
+							<div class="city-card-body">
+								<h3>{area.city}</h3>
+								<p>{area.summary}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="contact-section">
+		<div class="container">
+			<SectionHeading subtitle="Our Services" title="Investigation Services" />
+			<ul class="services-list">
+				{
+					investigationServices.map((service) => (
+						<li>
+							<a href={service.href}>{service.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="contact-section contact-section--surface">
+		<div class="container">
+			<SectionHeading subtitle="Why Choose Us" title="Licensed, Discreet, Results-Driven" />
+			<ul class="why-list">
+				{whyChooseUs.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+	</section>
+</BaseLayout>

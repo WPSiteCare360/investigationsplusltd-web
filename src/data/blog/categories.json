@@ -1,0 +1,98 @@
+[
+  {
+    "id": 29,
+    "slug": "bug-sweeping-services",
+    "name": "Bug Sweeping Services",
+    "description": "",
+    "count": 8,
+    "parent": 28
+  },
+  {
+    "id": 81,
+    "slug": "digital",
+    "name": "Digital",
+    "description": "",
+    "count": 7,
+    "parent": 27
+  },
+  {
+    "id": 80,
+    "slug": "eavesdropping-and-wiretapping",
+    "name": "Eavesdropping and Wiretapping",
+    "description": "",
+    "count": 7,
+    "parent": 29
+  },
+  {
+    "id": 75,
+    "slug": "fun-facts",
+    "name": "Fun Facts",
+    "description": "",
+    "count": 5,
+    "parent": 26
+  },
+  {
+    "id": 68,
+    "slug": "gold-diggers",
+    "name": "Gold Diggers",
+    "description": "",
+    "count": 1,
+    "parent": 67
+  },
+  {
+    "id": 67,
+    "slug": "infidelity",
+    "name": "Infidelity",
+    "description": "",
+    "count": 4,
+    "parent": 27
+  },
+  {
+    "id": 57,
+    "slug": "marriage-romance",
+    "name": "Marriage & Romance",
+    "description": "",
+    "count": 1,
+    "parent": 56
+  },
+  {
+    "id": 27,
+    "slug": "private-investigation",
+    "name": "Private Investigation",
+    "description": "",
+    "count": 12,
+    "parent": 0
+  },
+  {
+    "id": 26,
+    "slug": "private-investigator",
+    "name": "Private Investigator",
+    "description": "",
+    "count": 34,
+    "parent": 0
+  },
+  {
+    "id": 56,
+    "slug": "scam",
+    "name": "Scam",
+    "description": "",
+    "count": 3,
+    "parent": 27
+  },
+  {
+    "id": 45,
+    "slug": "tips-and-advice",
+    "name": "Tips and Advice",
+    "description": "",
+    "count": 10,
+    "parent": 26
+  },
+  {
+    "id": 28,
+    "slug": "tscm",
+    "name": "TSCM",
+    "description": "",
+    "count": 8,
+    "parent": 27
+  }
+]

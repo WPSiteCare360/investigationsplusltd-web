@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DesignGuide from '../components/svelte/DesignGuide.svelte';
+---
+
+<BaseLayout
+	title="Design System | Investigations Plus"
+	description="Design tokens, typography, and UI patterns for the Investigations Plus website."
+	noindex={true}
+>
+	<DesignGuide client:load />
+</BaseLayout>

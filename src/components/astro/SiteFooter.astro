@@ -1,0 +1,203 @@
+---
+import { mainNav, siteConfig, socialLinks } from '../../data/navigation';
+---
+
+<footer class="site-footer">
+	<div class="container footer-grid">
+		<div class="footer-brand">
+			<img
+				class="footer-logo"
+				src="/images/brand/INVESTIGATION-PLUS-CIRCLE-NUMBER-copy.png"
+				alt={`${siteConfig.name} logo`}
+				width="150"
+				height="148"
+			/>
+			<h2 class="footer-tagline">{siteConfig.tagline}</h2>
+			<p class="footer-copy">{siteConfig.copyright}</p>
+		</div>
+
+		<div class="footer-links">
+			<div class="footer-subtitle-wrap">
+				<h6 class="subtitle-green footer-subtitle">Links</h6>
+			</div>
+			<nav aria-label="Footer">
+				<ul class="footer-nav">
+					{
+						mainNav.map((item) => (
+							<li>
+								<a href={item.href}>{item.label}</a>
+								{item.children && (
+									<ul>
+										{item.children.map((child) => (
+											<li>
+												<a href={child.href}>{child.label}</a>
+											</li>
+										))}
+									</ul>
+								)}
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<ul class="social-list">
+				{
+					socialLinks.map((link) => (
+						<li>
+							<a href={link.href} target="_blank" rel="noopener noreferrer">
+								{link.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div class="footer-contact">
+			<div class="footer-subtitle-wrap">
+				<h6 class="subtitle-green footer-subtitle">Get in Touch</h6>
+			</div>
+			<p>
+				<a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
+			</p>
+			<p>
+				<a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+			</p>
+			<p>
+				<a href="/contact">Contact form</a>
+			</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		background-color: var(--color-surface);
+		padding: var(--space-15) 0 var(--space-10);
+		color: var(--color-black);
+	}
+
+	.footer-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-10);
+		align-items: start;
+	}
+
+	.footer-brand {
+		text-align: center;
+	}
+
+	.footer-logo {
+		margin: 0 auto var(--space-6);
+		max-width: 150px;
+	}
+
+	.footer-tagline {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-snug);
+		margin-bottom: var(--space-6);
+	}
+
+	.footer-copy {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		margin: 0;
+	}
+
+	.footer-subtitle {
+		margin-bottom: var(--space-6);
+	}
+
+	.footer-subtitle-wrap {
+		padding-left: var(--layout-subtitle-line-offset);
+	}
+
+	.footer-nav {
+		list-style: none;
+		margin: 0 0 var(--space-6);
+		padding: 0;
+	}
+
+	.footer-nav > li {
+		margin-bottom: var(--space-2);
+	}
+
+	.footer-nav a {
+		color: var(--color-footer-link);
+		font-family: var(--font-heading);
+		font-size: var(--font-size-sm);
+		text-transform: uppercase;
+		text-decoration: none;
+	}
+
+	.footer-nav a:hover {
+		color: var(--color-footer-link-hover);
+	}
+
+	.footer-nav ul {
+		list-style: none;
+		margin: var(--space-2) 0 0;
+		padding-left: var(--space-4);
+	}
+
+	.footer-nav ul a {
+		text-transform: none;
+		font-weight: var(--font-weight-normal);
+	}
+
+	.social-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-3);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.social-list a {
+		font-size: var(--font-size-sm);
+		color: var(--color-footer-link);
+		text-decoration: none;
+	}
+
+	.social-list a:hover {
+		color: var(--color-theme);
+	}
+
+	.footer-contact p {
+		margin-bottom: var(--space-3);
+	}
+
+	.footer-contact a {
+		color: var(--color-footer-link);
+		text-decoration: none;
+	}
+
+	.footer-contact a:hover {
+		color: var(--color-theme);
+	}
+
+	.footer-note {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		margin-top: var(--space-4);
+	}
+
+	@media (max-width: 900px) {
+		.footer-grid {
+			grid-template-columns: 1fr;
+			gap: var(--space-8);
+		}
+
+		.footer-brand {
+			text-align: left;
+		}
+
+		.footer-logo {
+			margin-inline: 0;
+		}
+	}
+</style>

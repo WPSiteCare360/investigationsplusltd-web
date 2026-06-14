@@ -1,5 +1,7 @@
 # build output
+resources
 dist/
+public/_redirects
 .netlify/
 # generated types
 .astro/

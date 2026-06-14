@@ -1,0 +1,138 @@
+---
+interface Props {
+	subtitle: string;
+	titleHtml: string;
+	image: string;
+	cta?: { label: string; href: string };
+}
+
+const { subtitle, titleHtml, image, cta } = Astro.props;
+---
+
+<section class="hero" style={`--hero-image: url('${image}')`}>
+	<div class="hero-overlay" aria-hidden="true"></div>
+	<div class="container hero-inner">
+		<div class="hero-heading">
+			<h6 class="hero-subtitle">{subtitle}</h6>
+			<h1 class="hero-title heading-mixed" set:html={titleHtml} />
+		</div>
+		{cta && <a class="btn btn-theme hero-cta" href={cta.href}>{cta.label}</a>}
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: var(--layout-hero-min-height);
+		display: flex;
+		align-items: center;
+		background-image: var(--hero-image);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		color: var(--color-white);
+		padding-inline: var(--layout-hero-padding-inline);
+	}
+
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background-color: var(--color-overlay);
+		opacity: 0.5;
+	}
+
+	.hero-inner {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		max-width: var(--layout-max-width);
+		margin-inline: auto;
+		padding-block: var(--space-16);
+		padding-inline: 0;
+	}
+
+	.hero-heading {
+		margin-bottom: var(--space-8);
+	}
+
+	/* envato-kit-62-ttl-green on hero: white italic text, green accent line */
+	.hero-subtitle {
+		position: relative;
+		display: inline-block;
+		width: auto;
+		margin: 0 0 var(--space-4);
+		padding-left: var(--layout-subtitle-line-offset);
+		font-family: var(--font-heading);
+		font-size: var(--font-size-hero-subtitle);
+		font-weight: var(--font-weight-light);
+		font-style: italic;
+		line-height: 1.2;
+		text-transform: capitalize;
+		color: var(--color-white);
+	}
+
+	.hero-subtitle::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: 13px;
+		width: var(--layout-subtitle-line-width);
+		height: 2px;
+		background-color: var(--color-theme);
+	}
+
+	/* envato-kit-62-ttl-mixed h1 on hero */
+	.hero-title {
+		margin: 0;
+		max-width: var(--layout-hero-title-max-width);
+		font-family: var(--font-heading);
+		font-size: var(--font-size-hero-title);
+		font-weight: var(--font-weight-bold);
+		line-height: 1.167;
+		text-transform: uppercase;
+		color: var(--color-white);
+	}
+
+	.hero-title :global(b),
+	.hero-title :global(strong) {
+		color: var(--color-theme);
+		font-weight: var(--font-weight-bold);
+	}
+
+	.hero-cta {
+		margin-top: var(--space-10);
+		font-size: var(--font-size-md);
+		font-weight: var(--font-weight-bold);
+		text-transform: capitalize;
+		padding: 0.75rem 1.75rem;
+		line-height: var(--line-height-tight);
+	}
+
+	@media (max-width: 1024px) {
+		.hero {
+			min-height: auto;
+			padding-inline: var(--layout-hero-padding-inline-md);
+			padding-block: var(--layout-hero-padding-block-md);
+		}
+
+		.hero-title {
+			font-size: var(--font-size-hero-title-md);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			padding-inline: var(--layout-hero-padding-inline-sm);
+			padding-block: var(--layout-hero-padding-block-sm);
+		}
+
+		.hero-title {
+			font-size: var(--font-size-hero-title-sm);
+		}
+
+		.hero-cta {
+			margin-top: var(--space-6);
+		}
+	}
+</style>

@@ -1,17 +1,173 @@
 ---
-import Welcome from '../components/Welcome.svelte';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/astro/HeroSection.astro';
+import SectionHeading from '../components/astro/SectionHeading.astro';
+import Accordion from '../components/svelte/Accordion.svelte';
+import TestimonialCarousel from '../components/svelte/TestimonialCarousel.svelte';
+import PartnerCarousel from '../components/svelte/PartnerCarousel.svelte';
+import {
+	homeSeo,
+	hero,
+	infoCards,
+	infoSection,
+	aboutBlocks,
+	expertise,
+	keyServices,
+	piValues,
+	testimonials,
+	chooseUsItems,
+	partners,
+	ctaBand,
+} from '../data/home';
+import '../styles/home.css';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Investigations Plus Ltd</title>
-	</head>
-	<body>
-		<Welcome client:load />
-	</body>
-</html>
+<BaseLayout title={homeSeo.title} description={homeSeo.description}>
+	<HeroSection {...hero} />
+
+	<section class="home-section home-section--info">
+		<div class="container">
+			<header class="info-section-heading">
+				<h6 class="info-eyebrow">{infoSection.subtitle}</h6>
+				<h2 class="info-title">{infoSection.title}</h2>
+			</header>
+			<div class="info-cards">
+				{
+					infoCards.map((card) => (
+						<article class="info-card">
+							<h4 class="info-card-title" set:html={card.titleHtml} />
+							<hr class="info-card-divider" aria-hidden="true" />
+							<p class="info-card-body">{card.body}</p>
+							<div class="info-card-action">
+								<a class="btn btn-theme info-card-btn" href={card.cta.href}>
+									{card.cta.label}
+								</a>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="container">
+			<div class="about-grid">
+				{
+					aboutBlocks.map((block) => (
+						<div class="about-block">
+							<h3>{block.heading}</h3>
+							{block.paragraphs.map((p) => (
+								<p>{p}</p>
+							))}
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section home-section--green expertise-band">
+		<div class="container">
+			<SectionHeading
+				subtitle={expertise.subtitle}
+				title={expertise.title}
+				variant="white"
+				align="center"
+			/>
+			<a class="btn btn-theme-light" href={expertise.cta.href}>
+				{expertise.cta.label}
+			</a>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="container">
+			<SectionHeading subtitle="Key Services" title="What We Do Best" />
+			<div class="services-list">
+				{
+					keyServices.map((service) => (
+						<article class="service-item">
+							<div class="service-number" aria-hidden="true">
+								{service.number}
+							</div>
+							<div class="service-content">
+								<h3>{service.title}</h3>
+								{
+									service.image && (
+										<img
+											class="service-image"
+											src={service.image}
+											alt=""
+											loading="lazy"
+											width="640"
+											height="360"
+										/>
+									)
+								}
+								<p>{service.body}</p>
+								<a class="service-link" href={service.link.href}>
+									{service.link.label}
+								</a>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section home-section--surface">
+		<div class="container">
+			<SectionHeading subtitle="PI+ Values" title="Why Clients Trust Us" />
+			<div class="values-grid">
+				{
+					piValues.map((value) => (
+						<article class="value-card">
+							<h3>{value.title}</h3>
+							<p>{value.body}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="container">
+			<SectionHeading subtitle="Testimonials" title="What Our Clients Say" />
+			<TestimonialCarousel client:visible items={testimonials} />
+		</div>
+	</section>
+
+	<section class="home-section home-section--surface">
+		<div class="container">
+			<SectionHeading subtitle="Choose Us" title="Reasons to Hire Investigations Plus" />
+			<Accordion client:visible items={chooseUsItems} />
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="container">
+			<SectionHeading subtitle="Partners" title="Trusted Collaborations" align="center" />
+			<PartnerCarousel client:visible items={partners} />
+		</div>
+	</section>
+
+	<section
+		class="cta-band"
+		style={`background-image: url('${ctaBand.image}')`}
+	>
+		<div class="cta-band-overlay" aria-hidden="true"></div>
+		<div class="container cta-band-inner">
+			<SectionHeading
+				subtitle={ctaBand.subtitle}
+				titleHtml={ctaBand.titleHtml}
+				variant="white"
+			/>
+			<a class="btn btn-theme" href={ctaBand.cta.href}>
+				{ctaBand.cta.label}
+			</a>
+		</div>
+	</section>
+</BaseLayout>

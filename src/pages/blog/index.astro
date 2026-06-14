@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+---
+
+<BaseLayout title="Blog | Investigations Plus" description="Articles and insights from Investigations Plus private investigators.">
+	<div class="container blog-index">
+		<h6 class="subtitle-green subtitle-wrap">Insights</h6>
+		<h1>Blog</h1>
+		<p class="blog-count">{posts.length} posts</p>
+		<ul class="post-list">
+			{
+				posts.map((post) => (
+					<li class="post-card">
+						<a href={`/blog/${post.data.slug}`}>
+							<strong>{post.data.title}</strong>
+						</a>
+						<time datetime={post.data.pubDate.toISOString()}>
+							{post.data.pubDate.toLocaleDateString('en-CA')}
+						</time>
+						{post.data.description && <p>{post.data.description}</p>}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</BaseLayout>
+
+<style>
+	.blog-index {
+		padding: var(--space-12) 0 var(--space-16);
+	}
+
+	.subtitle-wrap {
+		padding-left: var(--layout-subtitle-line-offset);
+	}
+
+	.blog-count {
+		color: var(--color-muted);
+	}
+
+	.post-list {
+		list-style: none;
+		margin: var(--space-8) 0 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-6);
+	}
+
+	.post-card {
+		padding: var(--space-5);
+		background: var(--color-surface);
+	}
+
+	.post-card a {
+		font-family: var(--font-heading);
+		font-size: var(--font-size-lg);
+		text-decoration: none;
+		color: var(--color-black);
+	}
+
+	.post-card a:hover {
+		color: var(--color-theme);
+	}
+
+	.post-card time {
+		display: block;
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		margin: var(--space-2) 0;
+	}
+
+	.post-card p {
+		margin: 0;
+		font-size: var(--font-size-sm);
+	}
+</style>
