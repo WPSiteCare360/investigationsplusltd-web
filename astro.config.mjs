@@ -14,11 +14,16 @@ const redirects = {
 	...legacyLocationRedirects,
 };
 
+// Netlify adapter only when building for deploy. In `astro dev`, the adapter's
+// Vite plugin can serve stale prerendered HTML from dist/ instead of recompiling src/.
+const useNetlifyAdapter =
+	process.argv.includes('build') || process.env.NETLIFY === 'true';
+
 // https://astro.build/config
 export default defineConfig({
 	trailingSlash: 'never',
 	integrations: [svelte()],
-	adapter: netlify(),
+	adapter: useNetlifyAdapter ? netlify() : undefined,
 	redirects,
 	server: {
 		host: true,

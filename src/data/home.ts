@@ -34,29 +34,13 @@ export const infoCards = [
 	},
 ];
 
-export const aboutBlocks = [
-	{
-		heading: 'About Us - Number 1 Toronto Private Investigators Team',
-		paragraphs: [
-			'Obviously, located in GTA -- Greater Toronto Area (Brampton, Ontario), Investigation Plus embodies the essence of professional private investigation. In fact, we recognize that successful private investigators require not only deep knowledge and years of experience but also keen observation skills, a sharp eye, and an analytical mind.',
-			'For instance, our Toronto private investigators team consists of highly experienced professionals from diverse backgrounds, including the military, legal, forensic, IT, cyber, radio, and psychological fields. Educated and trend-aware, we continually explore innovative investigation methods, ensuring we remain at the forefront of our industry.',
-		],
-	},
-	{
-		heading: 'Diverse Range of Cases for Toronto Private Investigators',
-		paragraphs: [
-			'Handling a diverse range of cases, we conduct legal research, civil and criminal investigations, and serve both private businesses and individual clients.',
-			'Whether your needs call for surveillance, undercover investigations, GPS tracking, background checks, or infidelity investigations, we possess the expertise to address them effectively.',
-		],
-	},
-	{
-		heading: "Toronto Private Investigators' Priorities",
-		paragraphs: [
-			'Indeed, at Investigation Plus, we prioritize accuracy, discretion, due diligence, and confidentiality in every investigation we handle.',
-			'Definitely, as licensed private investigators, we take pride in our commitment to timely responses, transparent communication, and punctual completion of reports following each investigation.',
-		],
-	},
-];
+export const serviceAreasIntro = {
+	heading: 'View Service Areas',
+	paragraphs: [
+		'Investigation Plus works with individuals, law firms, insurance providers, corporations, and businesses that need reliable information handled with discretion. Our investigators bring experience from legal, forensic, military, IT, cyber, and related professional backgrounds, allowing us to approach each case with care, accuracy, and practical judgment.',
+		'Every investigation is handled confidentially, with clear communication and timely reporting from start to finish.',
+	],
+};
 
 export const expertise = {
 	subtitle: 'Our Expertise',

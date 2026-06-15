@@ -1,0 +1,21 @@
+---
+description: Dev server and build verification workflow
+alwaysApply: true
+---
+
+# Dev server and build checks
+
+## Dev server
+
+- Do not start `npm run dev` (or `astro dev`) unless the user explicitly asks.
+- The user runs their own dev server. Assume one is already running when they are testing locally.
+- If you must start a dev server for debugging:
+  - Use a dedicated port if needed (e.g. `--port 4339`) to avoid conflicting with the user's server.
+  - Stop it before finishing the task: kill the process group or use `timeout` so nothing is left orphaned.
+  - Never pipe dev output to `head` or other commands that close the pipe while the server keeps running.
+  - After stopping, verify with `pgrep -af "astro dev"` that no stray process remains (except the user's).
+
+## Build verification
+
+- After code or config changes, run `npm run build` and confirm it succeeds before considering the task done.
+- If the build fails, fix the errors and rebuild until it passes.

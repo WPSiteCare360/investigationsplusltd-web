@@ -113,18 +113,17 @@
 	padding: 0.75rem 2.5rem;
 }
 
-/* About blocks */
-.about-grid {
-	display: grid;
-	gap: var(--space-10);
+/* Service areas intro (below info cards) */
+.service-areas-intro {
 	max-width: 56rem;
 }
 
-.about-block h3 {
+.service-areas-intro h3 {
 	font-size: var(--font-size-xl);
+	margin-bottom: var(--space-6);
 }
 
-.about-block p {
+.service-areas-intro p {
 	color: var(--color-muted);
 	line-height: var(--line-height-relaxed);
 }

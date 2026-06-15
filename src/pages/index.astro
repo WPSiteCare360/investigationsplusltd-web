@@ -10,7 +10,7 @@ import {
 	hero,
 	infoCards,
 	infoSection,
-	aboutBlocks,
+	serviceAreasIntro,
 	expertise,
 	keyServices,
 	piValues,
@@ -52,17 +52,9 @@ import '../styles/home.css';
 
 	<section class="home-section">
 		<div class="container">
-			<div class="about-grid">
-				{
-					aboutBlocks.map((block) => (
-						<div class="about-block">
-							<h3>{block.heading}</h3>
-							{block.paragraphs.map((p) => (
-								<p>{p}</p>
-							))}
-						</div>
-					))
-				}
+			<div class="service-areas-intro">
+				<h3>{serviceAreasIntro.heading}</h3>
+				{serviceAreasIntro.paragraphs.map((p) => <p>{p}</p>)}
 			</div>
 		</div>
 	</section>
